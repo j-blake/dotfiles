@@ -22,11 +22,12 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'mhinz/vim-signify'
+Plug 'preservim/nerdtree'
 
 " Initialize plugin system
 call plug#end()
 
-colorscheme onehalfdark
+colorscheme onehalflight
 if exists('+termguicolors')
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
@@ -48,7 +49,7 @@ if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
 
-let g:airline_theme='onehalfdark'
+let g:airline_theme='onehalflight'
 let g:airline_powerline_fonts = 1
 
 " unicode symbols
