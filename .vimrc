@@ -7,9 +7,6 @@ let g:ale_disabled_lsp = 1
 call plug#begin('~/.vim/custom_plugins')
 
 " Make sure you use single quotes
-" Plug 'NLKNguyen/papercolor-theme'
-" Plug 'ayu-theme/ayu-vim'
-Plug 'sonph/onehalf', { 'rtp': 'vim' }
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
 Plug 'maxmellon/vim-jsx-pretty'
@@ -28,27 +25,36 @@ Plug 'mhinz/vim-signify'
 Plug 'preservim/nerdtree'
 Plug 'prettier/vim-prettier', {'do': 'yarn install'}
 Plug 'dense-analysis/ale'
+Plug 'sonph/onehalf', { 'rtp': 'vim' }
+" Plug 'morhetz/gruvbox'
 
 " Initialize plugin system
 call plug#end()
 
+" must ensure italics support in terminal
+" https://github.com/sonph/onehalf/pull/101
+" https://apple.stackexchange.com/questions/266333/how-to-show-italic-in-vim-in-iterm2
+syntax on
+" Use new regular expression engine (ts performance)
+set re=0
+set t_Co=256
+set number
+set cursorline
+set laststatus=2
+set tabstop=2
+set shiftwidth=2
+set expandtab
+set background=dark
+
 colorscheme onehalflight
+" colorscheme gruvbox
 if exists('+termguicolors')
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-  set termguicolors
 endif
+set termguicolors
 
-" set background=dark
-" set termguicolors     " enable true colors support
-" let ayucolor="light"  " for light version of theme
-" let ayucolor="mirage" " for mirage version of theme
-" let ayucolor="dark"   " for dark version of theme
-" colorscheme ayu
 
-set number
-set cursorline
-" set laststatus=2
 " Prettier and linting
 let g:prettier#autoformat_config_present = 1
 let g:ale_fixers = {
