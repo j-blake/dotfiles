@@ -1,3 +1,6 @@
+" See https://github.com/dense-analysis/ale#faq-coc-nvim
+let g:ale_disabled_lsp = 1
+
 " Specify a directory for plugins
 " - For Neovim: stdpath('data') . '/plugged'
 " - Avoid using standard Vim directory names like 'plugin'
@@ -23,6 +26,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'mhinz/vim-signify'
 Plug 'preservim/nerdtree'
+Plug 'prettier/vim-prettier', {'do': 'yarn install'}
+Plug 'dense-analysis/ale'
 
 " Initialize plugin system
 call plug#end()
@@ -44,6 +49,12 @@ endif
 set number
 set cursorline
 " set laststatus=2
+" Prettier and linting
+let g:prettier#autoformat_config_present = 1
+let g:ale_fixers = {
+  \ 'javascript': ['eslint']
+  \ }
+let g:ale_fix_on_save = 1
 
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
@@ -51,6 +62,7 @@ endif
 
 let g:airline_theme='onehalflight'
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#ale#enabled = 1
 
 " unicode symbols
 let g:airline_left_sep = '»'
