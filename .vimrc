@@ -101,6 +101,10 @@ let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#fzf#enabled = 0
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 
+let g:airline_filetype_overrides = {
+  \ 'coc-explorer':  [ 'CoC Explorer', '' ],
+  \ 'nerdtree': [ get(g:, 'NERDTreeStatusline', 'NERD'), '' ] }
+
 " unicode symbols
 let g:airline_left_sep = '»'
 let g:airline_left_sep = '▶'
