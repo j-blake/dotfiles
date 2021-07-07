@@ -25,6 +25,8 @@ Plug 'mhinz/vim-signify'
 Plug 'preservim/nerdtree'
 Plug 'prettier/vim-prettier', {'do': 'yarn install'}
 Plug 'dense-analysis/ale'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
 " Plug 'morhetz/gruvbox'
 
@@ -46,6 +48,8 @@ set shiftwidth=2
 set expandtab
 set background=dark
 
+nnoremap <leader>s :GFiles<CR>
+
 colorscheme onehalflight
 " colorscheme gruvbox
 if exists('+termguicolors')
@@ -54,6 +58,31 @@ if exists('+termguicolors')
 endif
 set termguicolors
 
+" Customize fzf colors to match your color scheme
+" - fzf#wrap translates this to a set of `--color` options
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+
+let g:fzf_layout = { 'window': { 'width': 1, 'height': 0.4, 'relative': v:true, 'yoffset': 1.0, 'border': 'top' } }
+let s:batTheme = ''
+if g:colors_name == 'onehalfdark'
+  let s:batTheme = '--theme=OneHalfDark'
+elseif g:colors_name == 'onehalflight'
+   let s:batTheme = '--theme=OneHalfLight'
+endif
+let $FZF_PREVIEW_COMMAND = 'bat {} -f ' . s:batTheme
 
 " Prettier and linting
 let g:prettier#autoformat_config_present = 1
@@ -69,6 +98,8 @@ endif
 let g:airline_theme='onehalflight'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#ale#enabled = 1
+let g:airline#extensions#fzf#enabled = 0
+let g:airline#extensions#tabline#formatter = 'unique_tail'
 
 " unicode symbols
 let g:airline_left_sep = '»'
