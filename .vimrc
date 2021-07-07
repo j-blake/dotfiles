@@ -10,6 +10,7 @@ call plug#begin('~/.vim/custom_plugins')
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
 Plug 'maxmellon/vim-jsx-pretty'
+Plug 'othree/yajs.vim'
 Plug 'elzr/vim-json'
 Plug 'plasticboy/vim-markdown'
 Plug 'vim-python/python-syntax'
@@ -17,6 +18,7 @@ Plug 'elixir-editors/vim-elixir'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc-tsserver'
 Plug 'tpope/vim-fugitive'
 " Plug 'airblade/vim-gitgutter'
 " uses the sign column to indicate VCS changes
