@@ -48,6 +48,9 @@ set shiftwidth=2
 set expandtab
 set background=dark
 
+nnoremap <leader>ev :vsplit $MYVIMRC<CR>
+nnoremap <leader>sv :source $MYVIMRC<CR>
+
 nnoremap <leader>s :GFiles<CR>
 
 colorscheme onehalflight
